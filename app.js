@@ -378,7 +378,7 @@ app.post("/rate",checkLocation,(req,res)=>{
   console.log(i+"s");
   const q="select * from orders where transaction_id='"+req.cookies.transaction_id+"'";
   const q1="update orders set rating = "+req.body.rate+" where transaction_id='"+req.cookies.transaction_id+"' and name='"+req.body.item_name+"'";
-  const q2="update items set ratings = (select avg(rating) from orders where name='"+req.body.item_name+"' and rid="+req.location.rest_id+") where name='"+req.body.item_name+"' and rid="+req.location.rest_id;
+  const q2="update items set rating = (select avg(rating) from orders where name='"+req.body.item_name+"' and rid="+req.location.rest_id+") where name='"+req.body.item_name+"' and rid="+req.location.rest_id;
   con.query(q1,(err,re)=>{
     if(err) throw err;
   })
@@ -466,7 +466,7 @@ app.post("/ans",authenticateToken, (req,res)=>{
   // generateQR(url);
   var rid = req.user.rid;
   var tno = req.body.tno;
-  var url="localhost:3000/menu?rid="+rid+"&tno="+tno;
+  var url="https://dineasy.onrender.com/menu?rid="+rid+"&tno="+tno;
   var sql="SELECT * FROM tblno WHERE tno="+tno+" and rest_id="+rid;
   con.query(sql,function(err,result){
       if(err) throw err;
