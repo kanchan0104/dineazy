@@ -21,9 +21,9 @@ const { log } = require('console');
  
 const con = mysql.createConnection({
     host:'sql12.freesqldatabase.com',
-    user:'sql12654117',
-    password:'8jFn793WfA',
-    database:'sql12654117'
+    user:'sql12667126',
+    password:'z7AVnvwYXd',
+    database:'sql12667126'
 })
 
 con.connect(function(err) {
